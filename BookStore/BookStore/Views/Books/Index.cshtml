@@ -1,0 +1,43 @@
+﻿@model List<BookStore.Model.Book>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using (Html.BeginForm("Index", "Books"))
+{
+    <input type="text" id="Value" name="searchText" />
+    <select id="column" name="PageOptionsDropDown">
+        <option value="BookID">BookID</option>
+        <option selected="selected" value="Title">Title</option>
+        <option value="Price">Price</option>
+        <option value="Genre">Genre</option>
+        <option value="PublisherID">PublisherID</option>
+    </select>
+    <input type="submit" id="search" value="Search" onclick="location.href='@Url.Action("Index", "Books")'"/>
+}
+<table>
+    <thead>
+        <tr>
+            <th width="80">BookID</th>
+            <th width="80">Title</th>
+            <th width="80">Price</th>
+            <th width="80">Genre</th>
+            <th width="80">PublisherID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var book in Model)
+        {
+            <tr>
+                <td>@book.BookID</td>
+                <td>@book.Title</td>
+                <td>@book.Price</td>
+                <td>@book.Genre</td>
+                <td>@book.PublisherID</td>
+            </tr>
+        }
+    </tbody>
+</table>
